@@ -2,1022 +2,473 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Coastridge Capital Partners — Private Investment Firm</title>
-<meta name="description" content="Coastridge Capital Partners invests in and builds enduring lower middle-market and middle-market businesses, partnering with founders, entrepreneurs, and management teams.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coastridge Capital Partners | Middle Market Private Equity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#0E1A2B;
-    --ink-2:#16273D;
-    --ink-3:#1E3350;
-    --stone:#ECE6D8;
-    --stone-2:#E1D8C4;
-    --paper:#F8F5ED;
-    --brass:#B08552;
-    --brass-light:#C9A374;
-    --tide:#4B7A72;
-    --text-dark:#182231;
-    --text-dim:#4B5568;
-    --text-light:#EFE9DA;
-    --text-light-dim:#B9BFC9;
-    --line-dark: rgba(239,233,218,0.14);
-    --line-light: rgba(14,26,43,0.12);
-    --max: 1180px;
-    --serif: "Fraunces", Georgia, serif;
-    --sans: "Inter", -apple-system, sans-serif;
-    --mono: "IBM Plex Mono", monospace;
+    --ink2:#13233a;
+    --paper:#F6F4EF;
+    --paper2:#EDE8DA;
+    --brass:#A8863F;
+    --brass-light:#C9A968;
+    --slate:#5B6472;
+    --slate-lt:#8891A0;
+    --line:#DCD5C4;
+    --line-dark:rgba(246,244,239,0.14);
+    --serif:'Source Serif 4', Georgia, serif;
+    --sans:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --mono:'IBM Plex Mono', 'Courier New', monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth; scroll-padding-top:84px;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
-  }
+  html{scroll-behavior:smooth;}
   body{
-    font-family:var(--sans);
-    color:var(--text-dark);
     background:var(--paper);
-    line-height:1.6;
+    color:var(--ink);
+    font-family:var(--sans);
     -webkit-font-smoothing:antialiased;
+    line-height:1.5;
+    overflow-x:hidden;
   }
-  a{color:inherit;}
-  img{max-width:100%;display:block;}
-  .wrap{max-width:var(--max); margin:0 auto; padding:0 32px;}
-  @media (max-width:640px){ .wrap{padding:0 22px;} }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1180px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.container{padding:0 20px;}}
 
-  h1,h2,h3,h4{font-family:var(--serif); font-weight:500; letter-spacing:-0.01em; color:var(--ink);}
-  .light-section h2, .light-section h3, .light-section h4{color:var(--ink);}
-  .dark-section h1, .dark-section h2, .dark-section h3{color:var(--text-light);}
-
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:12px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--brass);
-    display:flex;
-    align-items:center;
-    gap:10px;
-  }
-  .eyebrow::before{
-    content:"";
-    width:22px;height:1px;background:var(--brass);
-    display:inline-block;
+  /* ---------- Reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
   }
 
-  :focus-visible{outline:2px solid var(--brass); outline-offset:3px;}
-
-  /* ---------- NAV ---------- */
+  /* ---------- Nav ---------- */
   header{
-    position:fixed; top:0; left:0; right:0; z-index:100;
-    background:rgba(14,26,43,0.0);
-    transition:background .35s ease, box-shadow .35s ease, border-color .35s ease;
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:26px 0;
+    transition:background .35s ease, padding .35s ease, border-color .35s ease;
     border-bottom:1px solid transparent;
   }
   header.scrolled{
-    background:rgba(14,26,43,0.92);
-    backdrop-filter:blur(10px);
+    background:rgba(14,26,43,0.96);
+    padding:16px 0;
     border-bottom:1px solid var(--line-dark);
+    backdrop-filter:blur(6px);
   }
-  .nav-inner{
-    max-width:var(--max); margin:0 auto; padding:20px 32px;
-    display:flex; align-items:center; justify-content:space-between;
+  nav.container{display:flex;align-items:center;justify-content:space-between;}
+  .brand{display:flex;align-items:center;gap:12px;color:#fff;}
+  .brand-mark{
+    width:36px;height:36px;border:1px solid var(--brass-light);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:15px;letter-spacing:0.5px;color:var(--brass-light);
+    flex-shrink:0;
   }
-  @media (max-width:640px){ .nav-inner{padding:16px 22px;} }
-  .brand{
-    font-family:var(--serif); font-size:19px; color:var(--text-light);
-    letter-spacing:0.01em; display:flex; align-items:baseline; gap:8px;
-    text-decoration:none;
+  .brand-name{font-family:var(--serif);font-size:18px;letter-spacing:0.3px;}
+  .brand-name b{font-weight:600;}
+  .nav-links{display:flex;gap:36px;align-items:center;}
+  .nav-links a{
+    color:rgba(246,244,239,0.82);font-size:13.5px;letter-spacing:0.4px;
+    font-weight:500;transition:color .25s ease;position:relative;
   }
-  .brand .mark{color:var(--brass); font-size:20px;}
-  nav.links{display:flex; gap:30px; list-style:none;}
-  nav.links a{
-    font-size:13.5px; color:var(--text-light-dim); text-decoration:none;
-    letter-spacing:0.02em; transition:color .2s ease; position:relative;
-  }
-  nav.links a:hover{color:var(--text-light);}
+  .nav-links a:hover{color:#fff;}
   .nav-cta{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.06em;
-    color:var(--ink); background:var(--brass); padding:10px 18px;
-    text-decoration:none; white-space:nowrap;
-    transition:background .2s ease;
+    border:1px solid var(--brass-light);color:var(--brass-light)!important;
+    padding:9px 20px;font-size:12.5px;letter-spacing:0.8px;text-transform:uppercase;
   }
-  .nav-cta:hover{background:var(--brass-light);}
-  .burger{display:none; background:none; border:none; cursor:pointer; padding:6px;}
-  .burger span{display:block; width:22px; height:2px; background:var(--text-light); margin:5px 0;}
-  @media (max-width:900px){
-    nav.links{display:none;}
-    .burger{display:block;}
+  .nav-cta:hover{background:var(--brass-light);color:var(--ink)!important;}
+  .nav-toggle{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer;}
+  @media(max-width:860px){
+    .nav-links{position:fixed;top:0;right:0;height:100vh;width:74%;max-width:320px;
+      background:var(--ink);flex-direction:column;justify-content:center;gap:30px;
+      transform:translateX(100%);transition:transform .4s ease;padding:40px;}
+    .nav-links.open{transform:translateX(0);}
+    .nav-toggle{display:block;}
   }
-  .mobile-menu{
-    display:none; position:fixed; inset:0; z-index:99; background:var(--ink);
-    padding:100px 32px 40px; flex-direction:column; gap:26px;
-  }
-  .mobile-menu.open{display:flex;}
-  .mobile-menu a{font-family:var(--serif); font-size:26px; color:var(--text-light); text-decoration:none;}
-  .mobile-menu .nav-cta{align-self:flex-start; margin-top:10px;}
 
-  /* ---------- HERO ---------- */
+  /* ---------- Hero ---------- */
   .hero{
-    position:relative; background:var(--ink); color:var(--text-light);
-    padding:172px 0 0; overflow:hidden;
+    position:relative;min-height:100vh;display:flex;align-items:flex-end;
+    background:linear-gradient(180deg, rgba(14,26,43,0.55) 0%, rgba(14,26,43,0.72) 55%, rgba(14,26,43,0.94) 100%),
+      url('https://images.unsplash.com/photo-1721170628208-dffed6eb3514?auto=format&fit=crop&w=2200&q=70') center/cover no-repeat;
+    color:#fff;
+    padding-top:120px;
   }
-  .hero-svg{
-    position:absolute; inset:0; width:100%; height:100%;
-    opacity:0.9;
+  .hero-inner{padding-bottom:96px;max-width:820px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:2.6px;text-transform:uppercase;
+    color:var(--brass-light);margin-bottom:22px;display:flex;align-items:center;gap:12px;
   }
-  .hero-svg .contour{fill:none; stroke-width:1.1; vector-effect:non-scaling-stroke;}
-  .hero-svg .c0{stroke:rgba(176,133,82,0.55);}
-  .hero-svg .c1{stroke:rgba(176,133,82,0.4);}
-  .hero-svg .c2{stroke:rgba(75,122,114,0.38);}
-  .hero-svg .c3{stroke:rgba(239,233,218,0.16);}
-  .hero-svg .c4{stroke:rgba(75,122,114,0.28);}
-  .hero-svg .c5{stroke:rgba(239,233,218,0.1);}
-  .hero-svg .c6{stroke:rgba(176,133,82,0.2);}
-  .hero-inner{position:relative; z-index:2;}
-  .hero-content{
-    max-width:760px; padding-bottom:120px;
-  }
+  .eyebrow::before{content:'';width:34px;height:1px;background:var(--brass-light);display:inline-block;}
   .hero h1{
-    font-size:clamp(38px, 6vw, 66px);
-    line-height:1.06;
-    margin:22px 0 24px;
-    font-weight:500;
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(34px,5.4vw,60px);line-height:1.08;letter-spacing:-0.5px;
+    margin-bottom:26px;
   }
-  .hero h1 em{font-style:italic; color:var(--brass-light); font-weight:400;}
-  .hero p.lede{
-    font-size:18px; color:var(--text-light-dim); max-width:560px; margin-bottom:40px;
+  .hero p{
+    font-size:17px;line-height:1.65;color:rgba(246,244,239,0.86);max-width:600px;margin-bottom:38px;
     font-weight:400;
   }
-  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-row{display:flex;gap:16px;flex-wrap:wrap;}
   .btn{
-    display:inline-flex; align-items:center; gap:10px;
-    font-family:var(--mono); font-size:12.5px; letter-spacing:0.06em;
-    padding:15px 26px; text-decoration:none; transition:all .2s ease;
-    border:1px solid transparent;
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 26px;font-size:13px;letter-spacing:1px;text-transform:uppercase;font-weight:500;
+    border:1px solid transparent;transition:all .25s ease;
   }
-  .btn-primary{background:var(--brass); color:var(--ink);}
-  .btn-primary:hover{background:var(--brass-light);}
-  .btn-ghost{border-color:var(--line-dark); color:var(--text-light);}
-  .btn-ghost:hover{border-color:var(--brass); color:var(--brass-light);}
+  .btn-primary{background:var(--brass-light);color:var(--ink);}
+  .btn-primary:hover{background:#fff;}
+  .btn-ghost{border-color:rgba(246,244,239,0.4);color:#fff;}
+  .btn-ghost:hover{border-color:#fff;background:rgba(255,255,255,0.06);}
 
-  /* ---------- STAT / ELEVATION BAND ---------- */
-  .elevation{
-    background:var(--ink); position:relative; padding:0 0 0;
+  /* ---------- Stats band ---------- */
+  .stats{
+    background:var(--ink);color:#fff;border-top:1px solid var(--line-dark);
   }
-  .elevation-band{
-    border-top:1px solid var(--line-dark);
-    padding:52px 0;
+  .stats-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);
   }
-  .stat-row{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:40px;
+  .stat{
+    padding:44px 30px;border-left:1px solid var(--line-dark);
   }
-  @media (max-width:700px){ .stat-row{grid-template-columns:1fr; gap:34px;} }
-  .stat{position:relative; padding-left:20px; border-left:1px solid var(--line-dark);}
+  .stat:first-child{border-left:none;}
   .stat .num{
-    font-family:var(--serif); font-size:44px; color:var(--brass-light); line-height:1;
+    font-family:var(--mono);font-size:clamp(26px,3vw,36px);color:var(--brass-light);
+    letter-spacing:-0.5px;margin-bottom:8px;
   }
-  .stat .label{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--text-light-dim); margin-top:10px; display:block;
-  }
-
-  /* ---------- RIDGE DIVIDER ---------- */
-  .ridge-divider{display:block; width:100%; height:70px;}
-  .ridge-divider path{fill:var(--paper);}
-  .ridge-divider.flip{transform:rotate(180deg);}
-
-  /* ---------- SECTIONS GENERAL ---------- */
-  section{padding:110px 0;}
-  @media (max-width:700px){ section{padding:76px 0;} }
-  .light-section{background:var(--paper);}
-  .dark-section{background:var(--ink); color:var(--text-light);}
-  .alt-section{background:var(--stone);}
-
-  .section-head{max-width:640px; margin-bottom:56px;}
-  .section-head h2{font-size:clamp(28px,3.4vw,40px); margin:16px 0 18px;}
-  .section-head p{color:var(--text-dim); font-size:16.5px;}
-  .dark-section .section-head p{color:var(--text-light-dim);}
-
-  /* ---------- ABOUT ---------- */
-  .about-grid{
-    display:grid; grid-template-columns:1.1fr 0.9fr; gap:80px; align-items:start;
-  }
-  @media (max-width:860px){ .about-grid{grid-template-columns:1fr; gap:48px;} }
-  .about-grid p{margin-bottom:18px; color:var(--text-dim); font-size:16px;}
-  .pull{
-    border-left:2px solid var(--brass); padding:6px 0 6px 26px;
-    font-family:var(--serif); font-style:italic; font-size:22px; color:var(--ink);
-    line-height:1.45;
-  }
-  .pull cite{display:block; font-style:normal; font-family:var(--mono); font-size:11.5px;
-    letter-spacing:0.08em; text-transform:uppercase; color:var(--brass); margin-top:16px;}
-
-  /* ---------- FOCUS ---------- */
-  .focus-columns{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
-  @media (max-width:800px){ .focus-columns{grid-template-columns:1fr;} }
-  .focus-columns p{color:var(--text-dim); font-size:16px; margin-bottom:16px;}
-
-  /* ---------- CAPITAL SOLUTIONS ---------- */
-  .cap-grid{
-    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
-    background:var(--line-light); border:1px solid var(--line-light);
-  }
-  @media (max-width:820px){ .cap-grid{grid-template-columns:1fr;} }
-  .cap-card{background:var(--paper); padding:38px 34px;}
-  .cap-card h3{font-size:20px; margin-bottom:6px;}
-  .cap-card .sub{font-family:var(--mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--tide); margin-bottom:22px; display:block;}
-  .cap-card ul{list-style:none;}
-  .cap-card li{
-    font-size:14.5px; color:var(--text-dim); padding:10px 0;
-    border-top:1px solid var(--line-light);
-    display:flex; align-items:baseline; gap:10px;
-  }
-  .cap-card li:first-of-type{border-top:none;}
-  .cap-card li::before{content:"—"; color:var(--brass); flex:none;}
-
-  /* ---------- CRITERIA TABLE ---------- */
-  .criteria-table{width:100%; border-collapse:collapse; margin-top:10px;}
-  .criteria-table tr{border-top:1px solid var(--line-light);}
-  .criteria-table tr:last-child{border-bottom:1px solid var(--line-light);}
-  .criteria-table td{padding:20px 10px; font-size:15.5px; color:var(--text-dim); vertical-align:top;}
-  .criteria-table td:first-child{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.05em; text-transform:uppercase;
-    color:var(--ink); width:260px; padding-right:30px;
-  }
-  @media (max-width:700px){
-    .criteria-table, .criteria-table tbody, .criteria-table tr, .criteria-table td{display:block; width:100%;}
-    .criteria-table td:first-child{padding-bottom:4px; padding-right:0;}
-    .criteria-table tr{padding:18px 0;}
-  }
-  .criteria-note{margin-top:34px; padding:26px 28px; background:var(--stone); border-left:2px solid var(--brass); font-size:14.5px; color:var(--text-dim);}
-
-  /* ---------- INSIGHTS ---------- */
-  .insight-article{
-    border-top:1px solid var(--line-light); padding:34px 0;
-  }
-  .insight-article:last-of-type{border-bottom:1px solid var(--line-light);}
-  .insight-article summary{
-    cursor:pointer; list-style:none; display:flex; align-items:flex-start;
-    justify-content:space-between; gap:24px;
-  }
-  .insight-article summary::-webkit-details-marker{display:none;}
-  .insight-article .s-head{flex:1;}
-  .insight-article .tag-sm{
-    font-family:var(--mono); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;
-    color:var(--tide); display:block; margin-bottom:10px;
-  }
-  .insight-article h3{font-size:21px; line-height:1.3; margin-bottom:8px;}
-  .insight-article .dek{color:var(--text-dim); font-size:14.5px;}
-  .insight-toggle{
-    flex:none; width:30px; height:30px; border:1px solid var(--line-light);
-    display:flex; align-items:center; justify-content:center; position:relative;
-    margin-top:2px;
-  }
-  .insight-toggle::before, .insight-toggle::after{
-    content:""; position:absolute; background:var(--brass);
-  }
-  .insight-toggle::before{width:12px; height:1px;}
-  .insight-toggle::after{width:1px; height:12px; transition:transform .2s ease;}
-  .insight-article[open] .insight-toggle::after{transform:rotate(90deg);}
-  .insight-body{padding-top:22px; max-width:760px;}
-  .insight-body p{color:var(--text-dim); font-size:15px; margin-bottom:16px;}
-  .insight-body p:last-child{margin-bottom:0;}
-
-  /* ---------- SECTORS ---------- */
-  .sector-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
-    background:var(--line-dark); margin-top:10px;
-  }
-  @media (max-width:820px){ .sector-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .sector-grid{grid-template-columns:1fr;} }
-  .sector-card{
-    background:var(--ink-2); padding:34px 28px; min-height:168px;
-    display:flex; flex-direction:column; justify-content:space-between;
-  }
-  .sector-card .idx{font-family:var(--mono); font-size:11.5px; color:var(--brass-light); letter-spacing:0.05em;}
-  .sector-card h4{color:var(--text-light); font-size:19px; margin-top:26px; font-weight:500;}
-
-  /* ---------- APPROACH / PROCESS ---------- */
-  .process{border-top:1px solid var(--line-light);}
-  .step{
-    display:grid; grid-template-columns:90px 1fr 1.3fr; gap:30px;
-    padding:34px 0; border-bottom:1px solid var(--line-light);
-    align-items:start;
-  }
-  @media (max-width:760px){ .step{grid-template-columns:56px 1fr; grid-template-areas:"n t" ". d";} .step .step-desc{grid-column:2;} }
-  .step .n{font-family:var(--serif); font-style:italic; font-size:26px; color:var(--brass);}
-  .step h4{font-size:19px;}
-  .step p{color:var(--text-dim); font-size:15px;}
-
-  /* ---------- VALUE CREATION ---------- */
-  .vc-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:30px;}
-  @media (max-width:900px){ .vc-grid{grid-template-columns:1fr 1fr;} }
-  @media (max-width:560px){ .vc-grid{grid-template-columns:1fr;} }
-  .vc-card h4{font-size:17px; margin:18px 0 10px;}
-  .vc-card p{font-size:14.5px; color:var(--text-dim);}
-  .vc-icon{width:34px; height:34px; border:1px solid var(--brass); border-radius:50%; position:relative;}
-  .vc-icon::after{content:""; position:absolute; inset:9px; background:var(--brass); border-radius:50%;}
-
-  /* ---------- WHY US ---------- */
-  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line-dark); margin-top:20px;}
-  @media (max-width:760px){ .why-grid{grid-template-columns:1fr;} }
-  .why-card{background:var(--ink); padding:36px;}
-  .why-card h4{color:var(--text-light); font-size:18px; margin-bottom:10px;}
-  .why-card p{color:var(--text-light-dim); font-size:14.5px;}
-
-  /* ---------- PROJECT FINANCE ---------- */
-  .pf-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
-  @media (max-width:840px){ .pf-grid{grid-template-columns:1fr; gap:36px;} }
-  .pf-grid p{color:var(--text-dim); font-size:16px; margin-bottom:16px;}
-  .tag-list{display:flex; flex-wrap:wrap; gap:10px; margin-top:10px;}
-  .tag{
-    font-family:var(--mono); font-size:12px; letter-spacing:0.03em;
-    border:1px solid var(--line-light); padding:8px 14px; color:var(--text-dim);
-  }
-  .all-sectors{
-    margin-top:64px; padding-top:44px; border-top:1px solid var(--line-light);
-    display:flex; flex-direction:column; align-items:flex-end; text-align:right;
-  }
-  .all-sectors-list{justify-content:flex-end;}
-  @media (max-width:700px){
-    .all-sectors{align-items:flex-start; text-align:left;}
-    .all-sectors .eyebrow{justify-content:flex-start !important;}
-    .all-sectors-list{justify-content:flex-start;}
+  .stat .label{font-size:12.5px;letter-spacing:0.6px;color:rgba(246,244,239,0.66);text-transform:uppercase;}
+  @media(max-width:760px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .stat:nth-child(3){border-left:none;}
+    .stat{border-top:1px solid var(--line-dark);}
+    .stat:nth-child(1),.stat:nth-child(2){border-top:none;}
   }
 
-  /* ---------- CONTACT ---------- */
-  .contact-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:70px;}
-  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr; gap:44px;} }
-  .info-line{padding:20px 0; border-top:1px solid var(--line-dark);}
-  .info-line:last-child{border-bottom:1px solid var(--line-dark);}
-  .info-line .k{font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light); display:block; margin-bottom:8px;}
-  .info-line a, .info-line span{color:var(--text-light); font-size:17px; text-decoration:none;}
-  .info-line a:hover{color:var(--brass-light);}
+  /* ---------- Section scaffolding ---------- */
+  section{padding:120px 0;}
+  @media(max-width:760px){section{padding:80px 0;}}
+  .section-head{max-width:640px;margin-bottom:64px;}
+  .kicker{
+    font-family:var(--mono);font-size:12px;letter-spacing:2.4px;text-transform:uppercase;
+    color:var(--brass);margin-bottom:16px;
+  }
+  .section-head h2{
+    font-family:var(--serif);font-weight:600;font-size:clamp(28px,3.4vw,42px);
+    line-height:1.15;letter-spacing:-0.4px;margin-bottom:20px;
+  }
+  .section-head p{color:var(--slate);font-size:16px;line-height:1.7;max-width:560px;}
+  .dark{background:var(--ink);color:#fff;}
+  .dark .kicker{color:var(--brass-light);}
+  .dark .section-head p{color:rgba(246,244,239,0.68);}
 
-  form{display:flex; flex-direction:column; gap:20px;}
-  .field{display:flex; flex-direction:column; gap:8px;}
-  .field label{font-family:var(--mono); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase; color:var(--brass-light);}
-  .field input, .field textarea{
-    background:transparent; border:none; border-bottom:1px solid var(--line-dark);
-    color:var(--text-light); font-family:var(--sans); font-size:15px; padding:10px 2px;
-    resize:vertical;
+  /* ---------- Approach / strategies ---------- */
+  .approach-wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:70px;align-items:start;}
+  @media(max-width:900px){.approach-wrap{grid-template-columns:1fr;gap:44px;}}
+  .strategy-list{border-top:1px solid var(--line);}
+  .strategy-item{
+    display:grid;grid-template-columns:56px 1fr;gap:22px;
+    padding:26px 0;border-bottom:1px solid var(--line);
   }
-  .field input:focus, .field textarea:focus{border-bottom-color:var(--brass); outline:none;}
-  .field input::placeholder, .field textarea::placeholder{color:var(--text-light-dim); opacity:0.6;}
-  .two-col{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
-  @media (max-width:520px){ .two-col{grid-template-columns:1fr;} }
-  .submit-row{margin-top:6px; display:flex; align-items:center; gap:16px;}
-  .form-note{font-size:12.5px; color:var(--text-light-dim);}
-
-  /* ---------- FOOTER ---------- */
-  footer{background:var(--ink); border-top:1px solid var(--line-dark); padding:44px 0 30px;}
-  .footer-inner{display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;}
-  .footer-inner nav{display:flex; gap:22px; flex-wrap:wrap;}
-  .footer-inner nav a{font-size:13px; color:var(--text-light-dim); text-decoration:none;}
-  .footer-inner nav a:hover{color:var(--text-light);}
-  .footer-bottom{
-    margin-top:34px; padding-top:22px; border-top:1px solid var(--line-dark);
-    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
-    font-size:12px; color:var(--text-light-dim);
-  }
-
-  /* ---------- PHOTOGRAPHY ---------- */
-  .photo-banner{
-    position:relative; height:440px; overflow:hidden;
-  }
-  @media (max-width:700px){ .photo-banner{height:340px;} }
-  .photo-banner img{
-    width:100%; height:100%; object-fit:cover;
-    filter:grayscale(20%) contrast(1.08) brightness(0.85);
-  }
-  .photo-banner::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(190deg, rgba(14,26,43,0.15) 0%, rgba(14,26,43,0.55) 55%, rgba(14,26,43,0.92) 100%);
-  }
-  .photo-banner-inner{
-    position:absolute; inset:0; z-index:2; display:flex; align-items:flex-end;
-  }
-  .photo-banner-inner .wrap{padding-bottom:44px; width:100%;}
-  .photo-banner-inner h3{
-    color:var(--text-light); font-size:clamp(22px,2.6vw,30px); max-width:640px;
-    font-weight:400; font-style:italic; line-height:1.35;
-  }
-  .photo-banner-inner .cap{
-    font-family:var(--mono); font-size:11.5px; letter-spacing:0.1em; text-transform:uppercase;
-    color:var(--brass-light); margin-bottom:14px; display:block;
+  .strategy-item .idx{font-family:var(--mono);font-size:13px;color:var(--brass);padding-top:3px;}
+  .strategy-item h3{font-family:var(--serif);font-size:19px;font-weight:600;margin-bottom:6px;}
+  .strategy-item p{color:var(--slate);font-size:14.5px;line-height:1.6;}
+  .approach-img{position:relative;overflow:hidden;}
+  .approach-img img{width:100%;height:100%;min-height:420px;object-fit:cover;}
+  .approach-img .cap{
+    position:absolute;bottom:0;left:0;right:0;padding:18px 22px;
+    background:linear-gradient(0deg, rgba(14,26,43,0.86), transparent);
+    color:#fff;font-family:var(--mono);font-size:11.5px;letter-spacing:1px;text-transform:uppercase;
   }
 
-  .photo-frame{
-    position:relative; border:1px solid var(--line-light); overflow:hidden;
-    aspect-ratio:4/5;
+  /* ---------- Sector ticker board ---------- */
+  .sector-board{
+    display:grid;grid-template-columns:repeat(5,1fr);
+    border-top:1px solid var(--line-dark);border-left:1px solid var(--line-dark);
   }
-  .photo-frame img{
-    width:100%; height:100%; object-fit:cover;
-    filter:grayscale(25%) contrast(1.05) brightness(0.92) sepia(6%);
+  @media(max-width:900px){.sector-board{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.sector-board{grid-template-columns:1fr;}}
+  .sector-cell{
+    border-right:1px solid var(--line-dark);border-bottom:1px solid var(--line-dark);
+    padding:30px 24px;min-height:168px;
+    display:flex;flex-direction:column;justify-content:space-between;
+    transition:background .3s ease;position:relative;
   }
-  .photo-frame::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(200deg, rgba(176,133,82,0.16), rgba(14,26,43,0.38));
-    mix-blend-mode:multiply;
+  .sector-cell:hover{background:rgba(201,169,104,0.07);}
+  .sector-code{
+    font-family:var(--mono);font-size:13px;letter-spacing:1.5px;color:var(--brass-light);
   }
-  .photo-frame .frame-cap{
-    position:absolute; left:0; right:0; bottom:0; z-index:2; padding:18px 20px;
-    font-family:var(--mono); font-size:11px; letter-spacing:0.06em; text-transform:uppercase;
-    color:var(--text-light);
-    background:linear-gradient(0deg, rgba(14,26,43,0.85), transparent);
-  }
-  .photo-frame.wide{aspect-ratio:16/10;}
+  .sector-name{font-family:var(--serif);font-size:17px;font-weight:600;margin-top:24px;line-height:1.25;}
+  .sector-name span{display:block;font-family:var(--sans);font-weight:400;font-size:12.5px;color:rgba(246,244,239,0.5);margin-top:8px;letter-spacing:0.2px;}
 
-  .split-photo{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
-  @media (max-width:860px){ .split-photo{grid-template-columns:1fr; gap:36px;} }
-  .split-photo.reverse{grid-template-columns:1fr 1fr;}
-  @media (max-width:860px){ .split-photo.reverse{grid-template-columns:1fr;} }
+  /* ---------- Philosophy / split image ---------- */
+  .split{
+    display:grid;grid-template-columns:1fr 1fr;
+  }
+  @media(max-width:860px){.split{grid-template-columns:1fr;}}
+  .split-img{min-height:460px;background-size:cover;background-position:center;}
+  .split-text{
+    background:var(--paper2);display:flex;align-items:center;
+    padding:80px 64px;
+  }
+  @media(max-width:860px){.split-text{padding:56px 32px;}}
+  .split-text .inner{max-width:460px;}
+  .split-text blockquote{
+    font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);line-height:1.42;font-weight:500;
+    margin-bottom:26px;letter-spacing:-0.2px;
+  }
+  .split-text .attrib{font-family:var(--mono);font-size:12px;letter-spacing:1px;color:var(--brass);text-transform:uppercase;}
 
-  /* ---------- REVEAL ANIMATION ---------- */
-  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
+  /* ---------- Leadership band ---------- */
+  .lead-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:20px;}
+  @media(max-width:760px){.lead-grid{grid-template-columns:1fr;gap:38px;}}
+  .lead-card h3{font-family:var(--serif);font-size:21px;font-weight:600;margin-bottom:12px;}
+  .lead-card p{color:var(--slate);font-size:14.5px;line-height:1.7;}
+  .lead-card .tag{font-family:var(--mono);font-size:11.5px;color:var(--brass);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px;display:block;}
+
+  /* ---------- Contact / CTA ---------- */
+  .cta-band{
+    background:var(--ink);color:#fff;padding:110px 0;text-align:center;
+  }
+  .cta-band h2{
+    font-family:var(--serif);font-weight:600;font-size:clamp(28px,4vw,46px);
+    line-height:1.15;max-width:720px;margin:0 auto 28px;letter-spacing:-0.4px;
+  }
+  .cta-band p{color:rgba(246,244,239,0.68);max-width:520px;margin:0 auto 40px;font-size:16px;}
+
+  /* ---------- Footer ---------- */
+  footer{background:#0A1420;color:rgba(246,244,239,0.55);padding:64px 0 34px;}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:48px;border-bottom:1px solid var(--line-dark);}
+  @media(max-width:760px){.foot-grid{grid-template-columns:1fr;gap:36px;}}
+  .foot-brand{display:flex;align-items:center;gap:12px;margin-bottom:18px;color:#fff;}
+  .foot-brand .brand-mark{width:32px;height:32px;font-size:13px;}
+  .foot-brand span{font-family:var(--serif);font-size:16px;}
+  footer .col h4{font-family:var(--mono);font-size:11.5px;letter-spacing:1.2px;text-transform:uppercase;color:rgba(246,244,239,0.85);margin-bottom:18px;}
+  footer .col a, footer .col p{display:block;font-size:14px;line-height:2;color:rgba(246,244,239,0.55);}
+  footer .col a:hover{color:var(--brass-light);}
+  .foot-bottom{padding-top:28px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;}
+  .disclaimer{max-width:900px;font-size:12px;line-height:1.8;color:rgba(246,244,239,0.4);margin-top:26px;}
 </style>
 </head>
 <body>
 
-<header id="site-header">
-  <div class="nav-inner">
-    <a href="#top" class="brand"><span class="mark">◈</span> Coastridge Capital Partners</a>
-    <nav class="links">
-      <a href="#about">About</a>
-      <a href="#focus">Focus</a>
-      <a href="#capital">Capital</a>
-      <a href="#criteria">Criteria</a>
-      <a href="#sectors">Sectors</a>
+<header id="siteHeader">
+  <nav class="container">
+    <a href="#top" class="brand">
+      <span class="brand-mark">CC</span>
+      <span class="brand-name">Coastridge <b>Capital Partners</b></span>
+    </a>
+    <div class="nav-links" id="navLinks">
       <a href="#approach">Approach</a>
-      <a href="#value-creation">Value Creation</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#insights">Insights</a>
-    </nav>
-    <a href="#contact" class="nav-cta">START A CONVERSATION</a>
-    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
+      <a href="#sectors">Sectors</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#firm">Firm</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">&#9776;</button>
+  </nav>
 </header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about">About</a>
-  <a href="#focus">Focus</a>
-  <a href="#capital">Capital Solutions</a>
-  <a href="#criteria">Investment Criteria</a>
-  <a href="#sectors">Sectors</a>
-  <a href="#approach">Approach</a>
-  <a href="#value-creation">Value Creation</a>
-  <a href="#why-us">Why Us</a>
-  <a href="#insights">Insights</a>
-  <a href="#contact">Contact</a>
-  <a href="#contact" class="nav-cta">START A CONVERSATION</a>
+<div id="top" class="hero">
+  <div class="container hero-inner reveal">
+    <div class="eyebrow">Private Equity — Lower Middle &amp; Middle Market</div>
+    <h1>Capital and conviction for the businesses that build the real economy.</h1>
+    <p>Coastridge Capital Partners partners with lower middle and middle market companies to fund growth, execute transitions, and build lasting, durable value across ten core sectors of the economy.</p>
+    <div class="btn-row">
+      <a href="#approach" class="btn btn-primary">Our Approach</a>
+      <a href="#contact" class="btn btn-ghost">Contact Coastridge</a>
+    </div>
+  </div>
 </div>
 
-<main id="top">
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="num">$6.5B+</div><div class="label">Assets Under Management</div></div>
+      <div class="stat reveal"><div class="num">$20B+</div><div class="label">Aggregate Transaction Value</div></div>
+      <div class="stat reveal"><div class="num">250+</div><div class="label">Years Combined Leadership Experience</div></div>
+      <div class="stat reveal"><div class="num">500+</div><div class="label">Clients Served</div></div>
+    </div>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="hero">
-    <svg class="hero-svg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <path class="contour c0" d="M0.0,258.1 C16.0,265.0 64.0,290.9 96.0,299.4 C128.0,308.0 160.0,309.7 192.0,309.4 C224.0,309.0 256.0,301.7 288.0,297.4 C320.0,293.0 352.0,287.0 384.0,283.3 C416.0,279.6 448.0,278.1 480.0,275.2 C512.0,272.3 544.0,271.1 576.0,265.8 C608.0,260.6 640.0,253.7 672.0,243.8 C704.0,233.8 736.0,213.8 768.0,206.1 C800.0,198.4 832.0,193.6 864.0,197.4 C896.0,201.2 928.0,218.1 960.0,228.8 C992.0,239.5 1024.0,252.3 1056.0,261.6 C1088.0,270.8 1120.0,280.3 1152.0,284.0 C1184.0,287.8 1216.0,282.9 1248.0,284.0 C1280.0,285.0 1312.0,287.5 1344.0,290.2 C1376.0,292.9 1424.0,298.5 1440.0,300.2" />
-      <path class="contour c1" d="M0.0,363.8 C16.0,364.1 64.0,368.7 96.0,365.7 C128.0,362.6 160.0,351.7 192.0,345.4 C224.0,339.1 256.0,330.9 288.0,327.7 C320.0,324.5 352.0,329.5 384.0,326.4 C416.0,323.2 448.0,317.3 480.0,309.0 C512.0,300.7 544.0,284.9 576.0,276.6 C608.0,268.3 640.0,257.7 672.0,259.3 C704.0,260.8 736.0,275.0 768.0,285.9 C800.0,296.8 832.0,314.9 864.0,324.7 C896.0,334.5 928.0,340.7 960.0,344.7 C992.0,348.8 1024.0,347.7 1056.0,348.8 C1088.0,349.8 1120.0,350.3 1152.0,350.9 C1184.0,351.5 1216.0,353.1 1248.0,352.6 C1280.0,352.1 1312.0,355.4 1344.0,347.9 C1376.0,340.5 1424.0,314.5 1440.0,307.8" />
-      <path class="contour c2" d="M0.0,421.4 C16.0,417.3 64.0,403.5 96.0,396.8 C128.0,390.0 160.0,385.4 192.0,381.0 C224.0,376.6 256.0,374.9 288.0,370.2 C320.0,365.6 352.0,360.1 384.0,353.2 C416.0,346.3 448.0,331.6 480.0,328.9 C512.0,326.2 544.0,329.5 576.0,337.0 C608.0,344.6 640.0,362.9 672.0,374.0 C704.0,385.1 736.0,398.3 768.0,403.7 C800.0,409.0 832.0,406.1 864.0,406.0 C896.0,405.9 928.0,403.5 960.0,403.1 C992.0,402.6 1024.0,405.1 1056.0,403.4 C1088.0,401.8 1120.0,401.4 1152.0,393.1 C1184.0,384.8 1216.0,364.5 1248.0,353.5 C1280.0,342.6 1312.0,329.9 1344.0,327.4 C1376.0,324.9 1424.0,336.7 1440.0,338.6" />
-      <path class="contour c3" d="M0.0,449.5 C16.0,446.4 64.0,435.2 96.0,430.4 C128.0,425.6 160.0,424.6 192.0,420.8 C224.0,417.1 256.0,413.4 288.0,408.1 C320.0,402.7 352.0,387.6 384.0,388.7 C416.0,389.8 448.0,403.8 480.0,414.6 C512.0,425.4 544.0,444.0 576.0,453.4 C608.0,462.8 640.0,470.7 672.0,471.2 C704.0,471.7 736.0,459.0 768.0,456.4 C800.0,453.9 832.0,456.9 864.0,455.8 C896.0,454.7 928.0,456.1 960.0,449.9 C992.0,443.6 1024.0,428.9 1056.0,418.3 C1088.0,407.7 1120.0,389.3 1152.0,386.2 C1184.0,383.1 1216.0,392.0 1248.0,400.0 C1280.0,407.9 1312.0,426.7 1344.0,434.0 C1376.0,441.3 1424.0,442.2 1440.0,443.8" />
-      <path class="contour c4" d="M0.0,478.8 C16.0,478.1 64.0,477.3 96.0,474.9 C128.0,472.5 160.0,467.3 192.0,464.4 C224.0,461.5 256.0,454.2 288.0,457.5 C320.0,460.7 352.0,473.0 384.0,483.7 C416.0,494.3 448.0,514.9 480.0,521.4 C512.0,528.0 544.0,524.9 576.0,523.0 C608.0,521.1 640.0,513.4 672.0,509.9 C704.0,506.5 736.0,505.8 768.0,502.2 C800.0,498.6 832.0,496.1 864.0,488.2 C896.0,480.4 928.0,461.2 960.0,455.0 C992.0,448.8 1024.0,445.6 1056.0,451.0 C1088.0,456.4 1120.0,478.1 1152.0,487.7 C1184.0,497.2 1216.0,504.6 1248.0,508.4 C1280.0,512.1 1312.0,507.4 1344.0,510.0 C1376.0,512.6 1424.0,521.6 1440.0,523.9" />
-      <path class="contour c5" d="M0.0,533.2 C16.0,532.2 64.0,529.0 96.0,527.3 C128.0,525.5 160.0,519.4 192.0,522.9 C224.0,526.4 256.0,537.9 288.0,548.2 C320.0,558.5 352.0,580.2 384.0,585.0 C416.0,589.7 448.0,580.9 480.0,576.6 C512.0,572.4 544.0,563.7 576.0,559.5 C608.0,555.3 640.0,556.1 672.0,551.3 C704.0,546.5 736.0,537.5 768.0,530.5 C800.0,523.4 832.0,509.0 864.0,509.2 C896.0,509.4 928.0,522.1 960.0,531.8 C992.0,541.4 1024.0,560.6 1056.0,566.9 C1088.0,573.3 1120.0,568.7 1152.0,569.9 C1184.0,571.1 1216.0,573.0 1248.0,573.9 C1280.0,574.8 1312.0,580.2 1344.0,575.4 C1376.0,570.6 1424.0,550.0 1440.0,544.9" />
-      <path class="contour c6" d="M0.0,589.3 C16.0,588.7 64.0,583.1 96.0,586.1 C128.0,589.1 160.0,598.2 192.0,607.2 C224.0,616.1 256.0,636.2 288.0,639.9 C320.0,643.6 352.0,634.6 384.0,629.3 C416.0,624.1 448.0,612.9 480.0,608.5 C512.0,604.2 544.0,607.5 576.0,603.2 C608.0,598.9 640.0,587.1 672.0,582.5 C704.0,577.9 736.0,570.9 768.0,575.4 C800.0,580.0 832.0,600.9 864.0,609.8 C896.0,618.8 928.0,626.1 960.0,628.9 C992.0,631.6 1024.0,626.8 1056.0,626.3 C1088.0,625.8 1120.0,627.6 1152.0,625.7 C1184.0,623.8 1216.0,622.7 1248.0,615.2 C1280.0,607.6 1312.0,586.7 1344.0,580.4 C1376.0,574.1 1424.0,577.9 1440.0,577.4" />
-    </svg>
-    <div class="wrap hero-inner">
-      <div class="hero-content">
-        <div class="eyebrow">PRIVATE INVESTMENT FIRM · LOWER MIDDLE MARKET &amp; MIDDLE MARKET</div>
-        <h1>Capital with a plan for what comes <em>next.</em></h1>
-        <p class="lede">Coastridge Capital Partners invests in and builds enduring lower middle-market and middle-market businesses — partnering with founders, management teams, and institutional co-investors who share our conviction that patient capital and disciplined execution compound into lasting value.</p>
-        <div class="btn-row">
-          <a href="#contact" class="btn btn-primary">Start a Conversation</a>
-          <a href="#approach" class="btn btn-ghost">Our Approach</a>
+<section id="approach">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">How We Invest</div>
+      <h2>A full spectrum of capital solutions.</h2>
+      <p>We structure capital around what a business actually needs — whether that's fuel for expansion, an ownership transition, or a balance sheet reset — deploying across the traditional range of private equity strategies.</p>
+    </div>
+
+    <div class="approach-wrap">
+      <div class="strategy-list reveal">
+        <div class="strategy-item">
+          <div class="idx">01</div>
+          <div><h3>Growth Capital</h3><p>Minority or structured investments that fund expansion, acquisitions, and new capacity for companies with proven models.</p></div>
+        </div>
+        <div class="strategy-item">
+          <div class="idx">02</div>
+          <div><h3>Leveraged Buyouts (LBOs)</h3><p>Control acquisitions of established, cash-generative businesses using disciplined, conservative capital structures.</p></div>
+        </div>
+        <div class="strategy-item">
+          <div class="idx">03</div>
+          <div><h3>Management Buyouts (MBOs)</h3><p>Partnering with proven operators to acquire the businesses they run, aligning incentives around long-term value.</p></div>
+        </div>
+        <div class="strategy-item">
+          <div class="idx">04</div>
+          <div><h3>Minority Investments</h3><p>Non-control capital for founders and family owners who want a partner and liquidity without ceding the wheel.</p></div>
+        </div>
+        <div class="strategy-item">
+          <div class="idx">05</div>
+          <div><h3>Recapitalizations</h3><p>Restructuring ownership and capital to fund a partial exit, buy out a partner, or reset the balance sheet for growth.</p></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ELEVATION / STATS -->
-  <div class="elevation">
-    <div class="wrap elevation-band reveal">
-      <div class="stat-row">
-        <div class="stat"><span class="num">$20B+</span><span class="label">Transactions Completed</span></div>
-        <div class="stat"><span class="num">250+</span><span class="label">Years Combined Team Experience</span></div>
-        <div class="stat"><span class="num">500+</span><span class="label">Client &amp; Partner Relationships</span></div>
-      </div>
-    </div>
-    <svg class="ridge-divider" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0,106.9 C14.1,109.1 56.5,120.7 84.7,120.0 C112.9,119.3 141.2,107.3 169.4,102.5 C197.6,97.7 225.9,92.1 254.1,91.3 C282.4,90.4 310.6,101.3 338.8,97.4 C367.1,93.6 395.3,81.0 423.5,68.1 C451.8,55.2 480.0,28.0 508.2,20.0 C536.5,12.0 564.7,15.0 592.9,20.0 C621.2,25.0 649.4,40.0 677.6,50.2 C705.9,60.4 734.1,77.7 762.4,81.2 C790.6,84.8 818.8,70.6 847.1,71.6 C875.3,72.7 903.5,79.6 931.8,87.6 C960.0,95.7 988.2,114.6 1016.5,120.0 C1044.7,125.4 1072.9,127.4 1101.2,120.0 C1129.4,112.6 1157.6,91.5 1185.9,75.7 C1214.1,60.0 1242.4,31.2 1270.6,25.4 C1298.8,19.6 1327.1,36.7 1355.3,41.0 C1383.5,45.4 1425.9,49.7 1440.0,51.5 L1440,160 L0,160 Z" />
-    </svg>
-  </div>
-
-  <!-- PHOTO BANNER -->
-  <div class="photo-banner reveal">
-    <img src="https://images.unsplash.com/photo-1758608307526-00c44ba7bb37?w=2000&q=80&auto=format&fit=crop" alt="City skyline at dusk">
-    <div class="photo-banner-inner">
-      <div class="wrap">
-        <span class="cap">Built for the Long Term</span>
-        <h3>"We believe successful investing requires more than completing transactions — it requires judgment, discipline, and relationships built on trust."</h3>
+      <div class="approach-img reveal">
+        <img src="https://images.unsplash.com/photo-1769740333462-9a63bfa914bc?auto=format&fit=crop&w=1400&q=75" alt="Coastridge investment committee reviewing a transaction">
+        <div class="cap">Investment Committee — Deal Review</div>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="light-section" id="about">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">ABOUT</div>
-        <h2>Understanding Coastridge</h2>
-      </div>
-      <div class="about-grid">
-        <div class="reveal">
-          <p>Coastridge Capital Partners is a private investment firm that partners with founders, entrepreneurs, family-owned businesses, and management teams to acquire and build high-quality lower middle-market and middle-market companies.</p>
-          <p>Our team's experience spans private equity, mergers &amp; acquisitions, capital markets, structured finance, and strategic advisory — a multidisciplinary view we bring to every stage of the investment lifecycle, from the first conversation through exit.</p>
-          <p>We are deliberately selective. We look for businesses with strong fundamentals, defensible market positions, and management teams who share our conviction about what the company can become. Once we partner, the work is just beginning: strategic planning, capital allocation, add-on acquisitions, and hands-on support designed to compound enterprise value over time.</p>
-        </div>
-        <div class="reveal">
-          <div class="photo-frame">
-            <img src="https://images.unsplash.com/photo-1745015446589-7ee6f702d8c1?w=1000&q=80&auto=format&fit=crop" alt="Modern glass office building facade">
-            <span class="frame-cap">Newport Beach, CA</span>
-          </div>
-          <p class="pull" style="margin-top:28px;">"Successful investing takes more than completing transactions. It takes sound judgment, disciplined execution, and relationships built on trust."<cite>Investment Philosophy</cite></p>
-        </div>
+<section id="sectors" class="dark">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">Where We Invest</div>
+      <h2>Ten sectors. One investment discipline.</h2>
+      <p>We concentrate where deep operating knowledge, structural demand, and defensible market positions intersect — building sector expertise that compounds across our portfolio.</p>
+    </div>
+  </div>
+  <div class="sector-board reveal">
+    <div class="sector-cell"><div class="sector-code">RE</div><div class="sector-name">Real Estate<span>Commercial &amp; specialized property platforms</span></div></div>
+    <div class="sector-cell"><div class="sector-code">PWR</div><div class="sector-name">Power &amp; Energy<span>Generation, utilities &amp; power infrastructure</span></div></div>
+    <div class="sector-cell"><div class="sector-code">INF</div><div class="sector-name">Infrastructure<span>Essential physical &amp; civil infrastructure</span></div></div>
+    <div class="sector-cell"><div class="sector-code">MDA</div><div class="sector-name">Media &amp; Entertainment<span>Content, distribution &amp; live experiences</span></div></div>
+    <div class="sector-cell"><div class="sector-code">CPR</div><div class="sector-name">Consumer Products / Retail<span>Branded goods &amp; specialty retail</span></div></div>
+    <div class="sector-cell"><div class="sector-code">TEC</div><div class="sector-name">Technology / AI<span>Applied software &amp; AI-enabled platforms</span></div></div>
+    <div class="sector-cell"><div class="sector-code">BSV</div><div class="sector-name">Business Services<span>Outsourced, mission-critical B2B services</span></div></div>
+    <div class="sector-cell"><div class="sector-code">FAC</div><div class="sector-name">Facilities Services<span>Building operations &amp; maintenance platforms</span></div></div>
+    <div class="sector-cell"><div class="sector-code">ESV</div><div class="sector-name">Energy Services<span>Upstream, midstream &amp; field services</span></div></div>
+    <div class="sector-cell"><div class="sector-code">ETS</div><div class="sector-name">Energy Transition &amp; Storage<span>Renewables, storage &amp; grid modernization</span></div></div>
+  </div>
+</section>
+
+<section id="philosophy" style="padding:0;">
+  <div class="split">
+    <div class="split-img reveal" style="background-image:url('https://images.unsplash.com/photo-1677273459827-e212995b079d?auto=format&fit=crop&w=1400&q=75');"></div>
+    <div class="split-text reveal">
+      <div class="inner">
+        <blockquote>"We invest like owners, not observers — bringing capital, discipline, and operating conviction to every partnership."</blockquote>
+        <div class="attrib">Coastridge Investment Philosophy</div>
       </div>
     </div>
-  </section>
-
-  <!-- FOCUS -->
-  <section class="alt-section" id="focus">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">INVESTMENT FOCUS</div>
-        <h2>Where thoughtful capital meets disciplined execution</h2>
-      </div>
-      <div class="focus-columns">
-        <div class="reveal">
-          <p>We invest in lower middle-market and middle-market private businesses, deploying capital and strategic guidance behind founders, entrepreneurs, and management teams ready for their next stage of growth.</p>
-          <p>Every engagement pairs institutional underwriting discipline with the flexibility to structure around what a business and its owners actually need — whether that is an acquisition, a recapitalization, growth financing, or a more complex situation entirely.</p>
-        </div>
-        <div class="reveal">
-          <p>Our multidisciplinary background in private equity, M&amp;A, and structured finance means we can move quickly on the capital structure while staying focused on the fundamentals: the durability of the business, the strength of its market position, and the alignment of everyone at the table.</p>
-          <p>We evaluate each opportunity on its own merits, assembling the combination of capital, financing, and strategic resources the situation calls for — rather than forcing every transaction through a single template.</p>
-        </div>
+  </div>
+  <div class="split">
+    <div class="split-text reveal" style="order:2;">
+      <div class="inner">
+        <blockquote>"The middle market is where hands-on partnership creates the most value — and where discipline matters most."</blockquote>
+        <div class="attrib">On the Lower Middle &amp; Middle Market</div>
       </div>
     </div>
-  </section>
+    <div class="split-img reveal" style="order:1;background-image:url('https://images.unsplash.com/photo-1759162788764-f40075c8857f?auto=format&fit=crop&w=1400&q=75');"></div>
+  </div>
+</section>
 
-  <!-- CAPITAL SOLUTIONS -->
-  <section class="light-section" id="capital">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">CAPITAL SOLUTIONS</div>
-        <h2>Flexible structures, built around the transaction</h2>
-        <p>We structure and coordinate institutional capital across the balance sheet, drawing on longstanding relationships throughout the private capital markets to tailor financing to each opportunity.</p>
+<section id="firm">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="kicker">The Firm</div>
+      <h2>Built on operating experience, not just capital.</h2>
+      <p>Coastridge Capital Partners was built by investors and operators who believe the middle market rewards patience, discipline, and genuine partnership over financial engineering.</p>
+    </div>
+    <div class="lead-grid">
+      <div class="lead-card reveal">
+        <span class="tag">Scale</span>
+        <h3>$6.5B+ in Assets</h3>
+        <p>We manage over $6.5 billion in assets on behalf of institutional and private clients, deployed across control and non-control strategies in the lower middle and middle market.</p>
       </div>
-      <div class="cap-grid reveal">
-        <div class="cap-card">
-          <span class="sub">Ownership</span>
-          <h3>Equity Capital</h3>
-          <ul>
-            <li>Control &amp; Majority Equity</li>
-            <li>Growth Equity</li>
-            <li>Minority Equity Investments</li>
-            <li>Joint Venture Equity</li>
-            <li>Co-Investment Capital</li>
-            <li>Preferred Equity</li>
-            <li>Structured Equity</li>
-          </ul>
-        </div>
-        <div class="cap-card">
-          <span class="sub">Debt &amp; Financing</span>
-          <h3>Credit &amp; Structured Finance</h3>
-          <ul>
-            <li>Senior Secured Credit Facilities</li>
-            <li>Unitranche Financing</li>
-            <li>Mezzanine Capital</li>
-            <li>Subordinated Debt</li>
-            <li>Private Credit</li>
-            <li>Bridge Financing</li>
-            <li>Asset-Based Lending</li>
-            <li>Real Estate Financing</li>
-          </ul>
-        </div>
-        <div class="cap-card">
-          <span class="sub">Transactions</span>
-          <h3>Strategic Transactions</h3>
-          <ul>
-            <li>Acquisition Financing</li>
-            <li>Management Buyouts</li>
-            <li>Recapitalizations</li>
-            <li>Corporate Carve-Outs</li>
-            <li>Add-On Acquisitions</li>
-            <li>Refinancings</li>
-            <li>Cross-Border Transactions</li>
-          </ul>
-        </div>
+      <div class="lead-card reveal">
+        <span class="tag">Track Record</span>
+        <h3>$20B+ in Transactions</h3>
+        <p>Our team has executed more than $20 billion in aggregate transaction value across buyouts, growth investments, and recapitalizations spanning ten core sectors.</p>
+      </div>
+      <div class="lead-card reveal">
+        <span class="tag">Experience</span>
+        <h3>250+ Years, One Team</h3>
+        <p>Our leadership brings a combined 250-plus years of investing and operating experience, having served more than 500 clients across market cycles.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- INVESTMENT CRITERIA -->
-  <section class="alt-section" id="criteria">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">INVESTMENT CRITERIA</div>
-        <h2>What we look for in a partner company</h2>
-        <p>These ranges guide where we spend our time — not hard rules. If a business is fundamentally strong, we'll make time for the conversation.</p>
-      </div>
-      <table class="criteria-table reveal">
-        <tr><td>Revenue</td><td>$20 million to $750 million</td></tr>
-        <tr><td>EBITDA</td><td>$3 million to $200 million</td></tr>
-        <tr><td>Enterprise Value</td><td>$25 million to $500 million</td></tr>
-        <tr><td>Check Size</td><td>$5 million to $250 million+ per transaction, with capacity to invest more alongside co-investment partners</td></tr>
-        <tr><td>Transaction Types</td><td>Control buyouts, majority and minority recapitalizations, growth equity, management buyouts, corporate carve-outs, add-on acquisitions</td></tr>
-        <tr><td>Ownership Situations</td><td>Founder- and family-owned businesses, entrepreneur-led companies, corporate divestitures, sponsor-to-sponsor transitions</td></tr>
-        <tr><td>Geography</td><td>Primarily North America, with select cross-border opportunities across the Americas</td></tr>
-        <tr><td>Business Characteristics</td><td>Defensible market position, durable customer relationships, recurring or repeatable revenue, and a management team committed to staying and growing the business</td></tr>
-      </table>
-      <div class="criteria-note reveal">
-        Every business is different, and the businesses we're proudest to have backed didn't always fit neatly on paper. If you're unsure whether your company fits, the fastest way to find out is a conversation, not a checklist.
-      </div>
+<div class="approach-img reveal" style="min-height:0;">
+  <img src="https://images.unsplash.com/photo-1692101736757-579f547ec36a?auto=format&fit=crop&w=2200&q=70" style="height:400px;object-fit:cover;" alt="Infrastructure and development project supported by Coastridge portfolio capital">
+</div>
+
+<div class="cta-band">
+  <div class="container">
+    <div class="reveal">
+      <div class="kicker" style="justify-content:center;display:flex;">Get In Touch</div>
+      <h2>Let's talk about your next chapter.</h2>
+      <p>Whether you're a business owner exploring a transition or an institutional partner evaluating Coastridge, we'd welcome the conversation.</p>
+      <a href="#contact" class="btn btn-primary">Contact Coastridge</a>
     </div>
-  </section>
+  </div>
+</div>
 
-  <!-- SECTORS -->
-  <section class="dark-section" id="sectors">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">VERTICALS WE INVEST</div>
-        <h2>Sectors where we bring real conviction</h2>
-        <p>We concentrate where our team's operating and transaction experience gives us a genuine edge in diligence, structuring, and value creation.</p>
+<footer id="contact">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="col">
+        <div class="foot-brand">
+          <span class="brand-mark">CC</span>
+          <span>Coastridge Capital Partners</span>
+        </div>
+        <p style="max-width:320px;">A middle market private equity firm investing growth capital, buyout, and recapitalization capital across ten core sectors of the economy.</p>
       </div>
-      <div class="sector-grid reveal">
-        <div class="sector-card"><span class="idx">01</span><h4>Business &amp; Industrial Services</h4></div>
-        <div class="sector-card"><span class="idx">02</span><h4>Manufacturing &amp; Industrials</h4></div>
-        <div class="sector-card"><span class="idx">03</span><h4>Healthcare &amp; Healthcare Services</h4></div>
-        <div class="sector-card"><span class="idx">04</span><h4>Consumer, Retail &amp; Specialty Brands</h4></div>
-        <div class="sector-card"><span class="idx">05</span><h4>Technology &amp; Tech-Enabled Services</h4></div>
-        <div class="sector-card"><span class="idx">06</span><h4>Infrastructure &amp; Energy Transition</h4></div>
-        <div class="sector-card"><span class="idx">07</span><h4>Real Estate</h4></div>
-        <div class="sector-card"><span class="idx">08</span><h4>Power &amp; Energy</h4></div>
-        <div class="sector-card"><span class="idx">09</span><h4>Media &amp; Entertainment</h4></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPROACH / PROCESS -->
-  <section class="light-section" id="approach">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">OUR APPROACH</div>
-        <h2>How a partnership with Coastridge unfolds</h2>
-        <p>Five stages, from first conversation to long-term outcome — each one building the alignment the next stage depends on.</p>
-      </div>
-      <div class="photo-frame wide reveal" style="margin-bottom:56px;">
-        <img src="https://images.unsplash.com/photo-1771270759486-1f7703945072?w=1800&q=80&auto=format&fit=crop" alt="Modern conference room where partnership discussions take place">
-        <span class="frame-cap">Where partnerships are structured and agreed</span>
-      </div>
-      <div class="process reveal">
-        <div class="step">
-          <span class="n">01</span>
-          <h4>Source &amp; Relate</h4>
-          <p class="step-desc">We build relationships with owners, operators, and advisors well before a transaction is on the table, so that when the time is right, we already understand the business.</p>
-        </div>
-        <div class="step">
-          <span class="n">02</span>
-          <h4>Evaluate &amp; Underwrite</h4>
-          <p class="step-desc">Rigorous, disciplined diligence on the fundamentals — market position, unit economics, management strength — before capital or terms are ever discussed.</p>
-        </div>
-        <div class="step">
-          <span class="n">03</span>
-          <h4>Structure &amp; Align</h4>
-          <p class="step-desc">We assemble the right mix of equity, credit, and deal structure for the specific situation, keeping the interests of owners, management, and capital partners aligned.</p>
-        </div>
-        <div class="step">
-          <span class="n">04</span>
-          <h4>Partner &amp; Build</h4>
-          <p class="step-desc">Post-close, we work alongside management on strategy, governance, add-on acquisitions, and operational improvement — the phase where most of the value is actually created.</p>
-        </div>
-        <div class="step">
-          <span class="n">05</span>
-          <h4>Realize</h4>
-          <p class="step-desc">Whether the path is a sale, recapitalization, or continued long-term hold, we plan the outcome with the same discipline we brought to the investment.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- VALUE CREATION -->
-  <section class="alt-section" id="value-creation">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">VALUE CREATION</div>
-        <h2>What we bring beyond the capital</h2>
-      </div>
-      <div class="vc-grid reveal">
-        <div class="vc-card">
-          <div class="vc-icon"></div>
-          <h4>Strategic Planning &amp; Governance</h4>
-          <p>Board-level partnership on long-term strategy, priorities, and the decisions that shape the next five years.</p>
-        </div>
-        <div class="vc-card">
-          <div class="vc-icon"></div>
-          <h4>Add-On Acquisitions</h4>
-          <p>Sourcing, diligencing, and financing bolt-on opportunities that extend a platform's reach and scale.</p>
-        </div>
-        <div class="vc-card">
-          <div class="vc-icon"></div>
-          <h4>Operational Improvement</h4>
-          <p>Hands-on support across pricing, operations, and talent — practical work, not slide decks.</p>
-        </div>
-        <div class="vc-card">
-          <div class="vc-icon"></div>
-          <h4>Capital Allocation &amp; Financing</h4>
-          <p>Ongoing access to follow-on capital and refinancing as the business's needs evolve.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY US -->
-  <section class="dark-section" id="why-us">
-    <div class="wrap">
-      <div class="split-photo reveal" style="margin-bottom:64px;">
-        <div>
-          <div class="eyebrow on-dark">WHY US</div>
-          <h2 style="margin:16px 0 18px; font-size:clamp(28px,3.4vw,40px);">What partners tell us they value most</h2>
-          <p style="color:var(--text-light-dim); font-size:16.5px;">Capital is available from many places. What owners and management teams say actually makes the difference is how a partner shows up once the agreement is signed.</p>
-        </div>
-        <div class="photo-frame">
-          <img src="https://images.unsplash.com/photo-1638262052640-82e94d64664a?w=1000&q=80&auto=format&fit=crop" alt="Two partners shaking hands over a wooden table">
-          <span class="frame-cap">Alignment, from day one</span>
-        </div>
-      </div>
-      <div class="why-grid reveal">
-        <div class="why-card">
-          <h4>Flexible capital, disciplined underwriting</h4>
-          <p>We structure around the transaction, not the other way around — without compromising on diligence.</p>
-        </div>
-        <div class="why-card">
-          <h4>A genuinely multidisciplinary team</h4>
-          <p>Private equity, M&amp;A, capital markets, structured finance, and strategic advisory experience under one roof.</p>
-        </div>
-        <div class="why-card">
-          <h4>Partnership-driven, highly selective</h4>
-          <p>We say no often, so that when we say yes, owners and management know we're fully committed.</p>
-        </div>
-        <div class="why-card">
-          <h4>Alignment of interests</h4>
-          <p>Our structures are built so that owners, management, and Coastridge win together — not at each other's expense.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INSIGHTS -->
-  <section class="light-section" id="insights">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">INSIGHTS</div>
-        <h2>Understanding the current landscape</h2>
-        <p>Perspectives from the Coastridge team on the lower middle market, deal structuring, and value creation.</p>
-      </div>
-
-      <div class="reveal">
-        <details class="insight-article" open>
-          <summary>
-            <div class="s-head">
-              <span class="tag-sm">Market Perspective · 01</span>
-              <h3>Why the Lower Middle Market Remains an Attractive Investment Opportunity in 2026</h3>
-              <p class="dek">Business quality and execution — not multiple expansion — are increasingly what separates strong outcomes from the rest.</p>
-            </div>
-            <span class="insight-toggle"></span>
-          </summary>
-          <div class="insight-body">
-            <p>The lower middle market continues to offer a compelling environment for disciplined private equity investors. Thousands of founder-led, family-owned, and entrepreneur-operated companies have established defensible positions within specialized industries but have not yet developed the institutional infrastructure, management depth, or access to capital needed to achieve their full potential. For investors capable of contributing strategic resources beyond capital alone, these businesses can present meaningful opportunities for long-term value creation.</p>
-            <p>The market is also becoming increasingly competitive. Axial reported that 2,635 new buyers joined its lower-middle-market platform during 2025, a 36% increase from the prior year. At the same time, acquisition multiples across private equity remained elevated, reinforcing the need for disciplined sourcing, careful underwriting, and a clearly defined value-creation thesis rather than reliance on favorable entry pricing or multiple expansion. (Axial)</p>
-            <p>In this environment, investment outcomes are likely to be driven increasingly by business quality and execution. Attractive companies typically exhibit durable customer relationships, differentiated products or services, recurring or predictable revenue, strong cash generation, defensible market positions, and capable leadership teams — along with identifiable opportunities to accelerate organic growth, strengthen operations, expand leadership capabilities, improve financial infrastructure, or pursue complementary acquisitions.</p>
-            <p>Add-on acquisitions are expected to remain a significant component of private equity activity in 2026 as investors seek geographic expansion, additional capabilities, operating efficiencies, and greater market density. However, a successful buy-and-build strategy requires more than completing transactions — it requires disciplined target selection, conservative underwriting, a repeatable integration process, and continued investment in the underlying platform company. (CLA)</p>
-            <p>The private investment firm model can be particularly well suited to the lower middle market. Without the pressure to deploy capital from a traditional blind-pool fund, independent sponsors can evaluate each opportunity individually and assemble the appropriate combination of equity capital, financing, industry expertise, and operating resources around a specific investment. This flexibility can support creative transaction structures and stronger alignment with founders, management teams, and investment partners.</p>
-            <p>At Coastridge Capital Partners, we believe the most attractive opportunities are found where a high-quality business can benefit from thoughtful capital, institutional discipline, and an engaged strategic partner. Our objective is not simply to acquire businesses, but to work alongside management teams to strengthen their organizations, execute clearly defined growth initiatives, and build more scalable, resilient, and strategically valuable enterprises.</p>
-          </div>
-        </details>
-
-        <details class="insight-article">
-          <summary>
-            <div class="s-head">
-              <span class="tag-sm">Capital Markets · 02</span>
-              <h3>Private Credit's Expanding Role in Middle-Market Transactions</h3>
-              <p class="dek">Flexibility from direct lenders shouldn't be mistaken for inexpensive or unrestricted capital.</p>
-            </div>
-            <span class="insight-toggle"></span>
-          </summary>
-          <div class="insight-body">
-            <p>Private credit has evolved from an alternative financing source into a core component of the modern middle-market capital structure. Direct lenders now compete alongside commercial banks, broadly syndicated loan providers, specialty finance companies, insurance companies, and other institutional capital sources to finance acquisitions, recapitalizations, refinancings, and growth initiatives.</p>
-            <p>The global private credit market now manages more than $2 trillion and is projected by PwC to reach approximately $3.4 trillion by 2030. Its growth has been supported by institutional demand for private-market yield, regulatory constraints affecting traditional banks, and borrowers' preference for financing solutions that can provide greater flexibility and execution certainty. (PwC)</p>
-            <p>For lower-middle-market companies and financial sponsors, private credit can offer several strategic advantages. Direct lenders may provide customized structures, higher leverage capacity, delayed-draw acquisition facilities, unitranche financing, flexible amortization, and greater certainty around closing — capabilities that can be particularly valuable in acquisitions, corporate carve-outs, complex ownership transitions, or aggressive growth plans.</p>
-            <p>Flexibility, however, should not be confused with inexpensive or unrestricted capital. Private credit borrowers may face higher interest costs, tighter documentation, substantial call protection, financial maintenance covenants, reporting requirements, and limitations on acquisitions, distributions, and additional indebtedness. As competition within the asset class grows, regulators and investors are also paying greater attention to underwriting standards, valuation practices, transparency, and borrower performance. In August 2026, the Federal Reserve Banks of New York and Dallas announced plans for a pilot survey designed to improve visibility into credit availability and lending standards across the private credit market. (Reuters)</p>
-            <p>The appropriate financing solution should therefore be evaluated within the context of the broader investment strategy. Maximum leverage is not necessarily optimal leverage. A durable capital structure should provide adequate liquidity, preserve the company's ability to invest through economic cycles, and support strategic initiatives without creating an excessive burden on cash flow.</p>
-            <p>At Coastridge, we view debt financing as an important component of transaction strategy and long-term value creation. We seek to balance cost, flexibility, leverage, covenant structure, and execution certainty while aligning the financing package with the company's operating profile and strategic plan. The objective is not simply to fund the closing, but to establish a capital structure capable of supporting the business throughout the investment period.</p>
-          </div>
-        </details>
-
-        <details class="insight-article">
-          <summary>
-            <div class="s-head">
-              <span class="tag-sm">Value Creation · 03</span>
-              <h3>Beyond Financial Engineering: The Growing Importance of Operational Value Creation</h3>
-              <p class="dek">With rate and multiple tailwinds gone, returns increasingly have to be built, not bought.</p>
-            </div>
-            <span class="insight-toggle"></span>
-          </summary>
-          <div class="insight-body">
-            <p>The private equity return environment has fundamentally changed. For many years, declining interest rates, readily available leverage, and expanding valuation multiples provided meaningful support to investment returns. Those conditions are no longer reliable assumptions. McKinsey's 2026 private-markets analysis describes an increasingly mature private equity industry in which the historical tailwinds of falling rates, multiple expansion, and abundant leverage have weakened. (McKinsey & Company)</p>
-            <p>As a result, investors must create a greater share of returns through improvements in the underlying business. Operational execution, organic growth, leadership development, technology adoption, strategic acquisitions, working-capital improvement, and disciplined capital allocation are increasingly central to the investment thesis. Recent private equity outlooks similarly point to a greater emphasis on operational value creation, digital transformation, and artificial-intelligence-enabled efficiencies. (CBH)</p>
-            <p>Effective value creation begins before an investment closes. During underwriting, investors should identify the specific initiatives expected to drive growth, improve profitability, reduce risk, or enhance strategic value — supported by realistic assumptions, accountable owners, measurable performance indicators, sufficient resources, and a practical implementation timeline.</p>
-            <p>For lower-middle-market companies, the greatest opportunities are often foundational. A business may have strong customer relationships, an attractive market position, and an entrepreneurial management team but lack scalable financial reporting, formal strategic planning, institutional sales processes, modern technology, or sufficient management depth. Addressing these needs can materially improve performance while positioning the company for sustainable growth.</p>
-            <p>Data quality is also becoming increasingly important. Operational initiatives can fail when management lacks accurate information regarding customer profitability, product costs, labor efficiency, pricing, or working-capital requirements. Better financial and operational visibility allows companies to prioritize initiatives, allocate resources more effectively, and measure whether the value-creation plan is producing the intended results. (Plante Moran)</p>
-            <p>At Coastridge, we believe value creation should strengthen the business rather than focus solely on short-term financial outcomes. Our approach is developed in partnership with management and tailored to the circumstances of each investment. By combining strategic planning, operating discipline, appropriate capitalization, and active governance, we seek to build companies with stronger leadership, improved performance, greater resilience, and broader long-term strategic options.</p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECT & INFRASTRUCTURE FINANCE -->
-  <section class="light-section" id="project-finance">
-    <div class="wrap">
-      <div class="pf-grid">
-        <div class="reveal">
-          <div class="eyebrow">PROJECT &amp; INFRASTRUCTURE FINANCE</div>
-          <h2 style="margin:16px 0 18px; font-size:clamp(26px,3vw,34px);">Financing for projects built to last</h2>
-          <p>Beyond our core private equity mandate, our Structured and Project Finance team arranges financing for infrastructure and energy projects across the Americas, including project bonds placed privately with U.S. and non-U.S. institutional investors, and U.S. municipal securities tied to infrastructure-related private activity bonds.</p>
-          <p>Energy transition is a growing focus for the group, alongside continued work in digital infrastructure financing across North and Latin America.</p>
-        </div>
-        <div class="reveal">
-          <div class="eyebrow">SECTORS COVERED</div>
-          <div class="tag-list" style="margin-top:20px;">
-            <span class="tag">Power Generation &amp; Renewables</span>
-            <span class="tag">Transmission</span>
-            <span class="tag">Toll Roads &amp; Social Infrastructure</span>
-            <span class="tag">Digital Infrastructure &amp; Fiber</span>
-            <span class="tag">Midstream</span>
-            <span class="tag">Renewable Fuels</span>
-            <span class="tag">Decarbonization Projects</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="all-sectors reveal">
-        <div class="eyebrow" style="justify-content:flex-end;">ALL SECTORS WE COVER</div>
-        <div class="tag-list all-sectors-list">
-          <span class="tag">Business &amp; Industrial Services</span>
-          <span class="tag">Manufacturing &amp; Industrials</span>
-          <span class="tag">Healthcare &amp; Healthcare Services</span>
-          <span class="tag">Consumer, Retail &amp; Specialty Brands</span>
-          <span class="tag">Technology &amp; Tech-Enabled Services</span>
-          <span class="tag">Infrastructure &amp; Energy Transition</span>
-          <span class="tag">Real Estate</span>
-          <span class="tag">Power &amp; Energy</span>
-          <span class="tag">Media &amp; Entertainment</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="dark-section" id="contact">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <div class="eyebrow">CONTACT</div>
-        <h2>Start a conversation</h2>
-        <p>Whether you're an owner exploring options or a co-investment partner, we'd like to hear from you.</p>
-      </div>
-      <div class="contact-grid reveal">
-        <div>
-          <div class="photo-frame" style="aspect-ratio:4/3; margin-bottom:32px; border-color:var(--line-dark);">
-            <img src="https://images.unsplash.com/photo-1760611656160-7c7bf7e6da9f?w=1000&q=80&auto=format&fit=crop" alt="Modern conference room at Coastridge Capital Partners">
-          </div>
-          <div class="info-line">
-            <span class="k">Telephone</span>
-            <a href="tel:19498735844">949.873.5844</a>
-          </div>
-          <div class="info-line">
-            <span class="k">Email</span>
-            <a href="mailto:info@coastridgecap.com">info@coastridgecap.com</a>
-          </div>
-          <div class="info-line">
-            <span class="k">Office</span>
-            <span>895 Dove Street, 3rd Floor<br>Newport Beach, CA 92660</span>
-          </div>
-        </div>
-        <form id="contactForm">
-          <div class="two-col">
-            <div class="field">
-              <label for="fname">Name *</label>
-              <input id="fname" name="name" type="text" placeholder="Jane Founder" required>
-            </div>
-            <div class="field">
-              <label for="femail">Email *</label>
-              <input id="femail" name="email" type="email" placeholder="jane@company.com" required>
-            </div>
-          </div>
-          <div class="field">
-            <label for="fcompany">Company</label>
-            <input id="fcompany" name="company" type="text" placeholder="Company name">
-          </div>
-          <div class="field">
-            <label for="fmsg">Message *</label>
-            <textarea id="fmsg" name="message" rows="4" placeholder="Tell us a bit about your business or opportunity" required></textarea>
-          </div>
-          <div class="submit-row">
-            <button type="submit" class="btn btn-primary" style="border:none; cursor:pointer;">Send Message</button>
-            <span class="form-note" id="formNote">We typically reply within one business day.</span>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <a href="#top" class="brand"><span class="mark">◈</span> Coastridge Capital Partners</a>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#focus">Focus</a>
-        <a href="#capital">Capital Solutions</a>
-        <a href="#criteria">Investment Criteria</a>
-        <a href="#sectors">Sectors</a>
+      <div class="col">
+        <h4>Firm</h4>
         <a href="#approach">Approach</a>
-        <a href="#value-creation">Value Creation</a>
-        <a href="#why-us">Why Us</a>
-        <a href="#insights">Insights</a>
-        <a href="#contact">Contact</a>
-      </nav>
+        <a href="#sectors">Sectors</a>
+        <a href="#philosophy">Philosophy</a>
+        <a href="#firm">The Firm</a>
+      </div>
+      <div class="col">
+        <h4>Contact</h4>
+        <p>General Inquiries<br>info@coastridgecap.com</p>
+        <p>Investor Relations<br>ir@coastridgecap.com</p>
+      </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 Coastridge Capital Partners. All rights reserved.</span>
-      <span>895 Dove Street, 3rd Floor, Newport Beach, CA 92660 · 949.873.5844</span>
+    <div class="foot-bottom">
+      <span>&copy; 2026 Coastridge Capital Partners. All rights reserved.</span>
+      <span>Lower Middle &amp; Middle Market Private Equity</span>
     </div>
+    <p class="disclaimer">This website is for informational purposes only and does not constitute an offer to sell, or a solicitation of an offer to buy, any security, and may not be relied upon in connection with any offer or sale of securities. Any such offer would be made only pursuant to definitive offering documents. Past performance is not indicative of future results. Please contact Coastridge Capital Partners directly for further information.</p>
   </div>
 </footer>
 
 <script>
-  // Header background on scroll
-  const header = document.getElementById('site-header');
-  const onScroll = () => {
-    if (window.scrollY > 40) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-  };
-  document.addEventListener('scroll', onScroll);
-  onScroll();
-
-  // Mobile menu toggle
-  const burger = document.getElementById('burger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  burger.addEventListener('click', () => {
-    const open = mobileMenu.classList.toggle('open');
-    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
   });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    burger.setAttribute('aria-expanded', 'false');
-  }));
 
-  // Reveal on scroll
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
   const revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('in');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => io.observe(el));
-  } else {
-    revealEls.forEach(el => el.classList.add('in'));
-  }
-
-  // Contact form (front-end only demo)
-  const form = document.getElementById('contactForm');
-  const formNote = document.getElementById('formNote');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    formNote.textContent = 'Message received — thank you. This form is a design preview and is not yet connected to email.';
-  });
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.12});
+  revealEls.forEach(el => io.observe(el));
 </script>
 
 </body>
